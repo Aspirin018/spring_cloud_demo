@@ -3,10 +3,6 @@
 ## 单个Auction Service
 *  直接运行，服务端口为7002
 
- `
- eureka.client.register-with-eureka=false 
- eureka.client.fetch-registry=false
- `
 ## 多个Auction Service实例
  * 启动两个实例
  
