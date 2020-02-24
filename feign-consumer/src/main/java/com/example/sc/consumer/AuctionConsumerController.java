@@ -14,4 +14,14 @@ public class AuctionConsumerController {
     public String auctionConsumer(){
         return auctionConsumerService.consumeAuction();
     }
+
+
+    @GetMapping(value="/feign-consumer-with-param")
+    public String auctionConsumerWithParams(){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(auctionConsumerService.showGoodsName("apple")).append("\n");
+        stringBuilder.append(auctionConsumerService.auctionGoods("peach", 20d)).append("\n");
+        stringBuilder.append(auctionConsumerService.showInfo(new Goods("peach", 20d))).append("\n");
+        return stringBuilder.toString();
+    }
 }

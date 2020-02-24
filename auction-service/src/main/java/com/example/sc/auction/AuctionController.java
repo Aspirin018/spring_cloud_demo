@@ -5,8 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AuctionController {
@@ -23,4 +22,21 @@ public class AuctionController {
         LOGGER.info("/auction-index, metadata:" + serviceInstance.getMetadata());
         return "auction index.";
     }
+
+    @GetMapping("/show-name")
+    public String showGoodsName(@RequestParam String name){
+        return "Goods: " + name;
+    }
+
+    @GetMapping("/auction-goods")
+    public Goods auctionGoods(@RequestHeader String name, @RequestHeader double price){
+        return new Goods("milk", 2d);
+    }
+
+    @PostMapping("/show-info")
+    public String showGoodsInfo(@RequestBody Goods goods){
+        return "Auction: " + goods.getName() + ", " + goods.getPrice();
+    }
+
+
 }
