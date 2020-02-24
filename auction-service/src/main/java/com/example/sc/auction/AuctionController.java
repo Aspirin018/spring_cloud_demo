@@ -7,6 +7,8 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Random;
+
 @RestController
 public class AuctionController {
 
@@ -16,10 +18,14 @@ public class AuctionController {
     DiscoveryClient discoveryClient;
 
     @GetMapping("/index")
-    public String auctionIndex() {
+    public String auctionIndex() throws InterruptedException {
         ServiceInstance serviceInstance = discoveryClient.getLocalServiceInstance();
         LOGGER.info("/auction-index, host:" + serviceInstance.getHost() + ", serviceId: " + serviceInstance.getServiceId());
         LOGGER.info("/auction-index, metadata:" + serviceInstance.getMetadata());
+
+        int sleepTime = new Random().nextInt(3000);
+        LOGGER.info("sleep time: " + sleepTime);
+        Thread.sleep(sleepTime);
         return "auction index.";
     }
 
