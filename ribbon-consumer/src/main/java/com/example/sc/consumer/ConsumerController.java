@@ -11,8 +11,12 @@ public class ConsumerController {
     @Autowired
     RestTemplate restTemplate;
 
+    @Autowired
+    ConsumeService consumeService;
+
     @GetMapping("/consume")
     public String consume(){
         return restTemplate.getForEntity("http://auction-service/index", String.class).getBody();
+//        return consumeService.consumeWithHystrix();
     }
 }
