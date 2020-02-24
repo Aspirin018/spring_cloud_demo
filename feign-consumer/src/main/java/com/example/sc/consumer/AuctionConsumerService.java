@@ -1,9 +1,10 @@
 package com.example.sc.consumer;
 
+import com.example.sc.fallback.AuctionConsumerFallback;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient("auction-service")
+@FeignClient(value = "auction-service", fallback = AuctionConsumerFallback.class)
 public interface AuctionConsumerService {
 
     @RequestMapping("/index")
