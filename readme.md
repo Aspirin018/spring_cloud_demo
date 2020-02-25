@@ -1,6 +1,5 @@
-#Spring Cloud学习
 
-#### Spring Cloud Eureka
+#### Spring Cloud 学习
 *  Eureka server 独立模块作为服务注册中心，可实现高可用
 *  Eureka Client 内嵌于auction-service模块，作为服务提供者，可创建多个实例
 *  Spring Cloud Ribbon 独立模块ribbon-consumer模块，作为服务调用者，可实现负载均衡
