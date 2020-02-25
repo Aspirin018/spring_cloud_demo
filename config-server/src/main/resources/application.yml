@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Aspirin018/config-server/
+server:
+  port: 7006
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7001/eureka
